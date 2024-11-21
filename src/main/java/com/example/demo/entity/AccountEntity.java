@@ -1,28 +1,23 @@
 package com.example.demo.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
-public class BankAccountEntity {
+public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "account_number", nullable = false, unique = true, length = 5)
+    private String accountNumber;
     private Double balance;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private UserEntity user;
 
-    public UserEntity getUser() {
-        return user;
-    }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 
     public Long getId() {
         return id;
@@ -32,6 +27,13 @@ public class BankAccountEntity {
         this.id = id;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public Double getBalance() {
         return balance;
@@ -40,6 +42,5 @@ public class BankAccountEntity {
     public void setBalance(Double balance) {
         this.balance = balance;
     }
-
 
 }
