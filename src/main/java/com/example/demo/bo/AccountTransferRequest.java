@@ -3,24 +3,17 @@ package com.example.demo.bo;
 import java.math.BigDecimal;
 
 public class AccountTransferRequest {
-    private String sessionId;
-
     private String toAccountNumber;
-
-
     private double amount;
 
+    public AccountTransferRequest() {}
+
+    public AccountTransferRequest(String toAccountNumber, double amount) {
+        this.toAccountNumber = toAccountNumber;
+        this.amount = amount;
+    }
+
     // Getters and setters
-
-
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public String getToAccountNumber() {
         return toAccountNumber;
     }
